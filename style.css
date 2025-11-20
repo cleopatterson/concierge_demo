@@ -1,0 +1,374 @@
+/* ────────────  GLOBAL STYLES  ──────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background: #fff;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: #1a1a1a;
+}
+
+/* ────────────  HEADER  ──────────── */
+.site-header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
+}
+
+.navbar {
+  padding: 0.5rem 0;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: #333 !important;
+  font-weight: 500;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0066cc !important;
+}
+
+/* ────────────  HERO SECTION  ──────────── */
+.hero-section {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  color: #fff;
+  padding: 4rem 0;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.quote-form {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  z-index: 1;
+}
+
+.input-with-icon .form-control {
+  padding-left: 45px;
+}
+
+.quote-form .form-control {
+  height: 52px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quote-form .form-control:focus {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+.quote-form .btn-primary {
+  background: #ff6b35;
+  border: none;
+  height: 52px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.quote-form .btn-primary:hover {
+  background: #e55a2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+.trust-indicators {
+  margin-top: 2rem;
+}
+
+.trust-stat {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
+  padding: 1rem 0;
+}
+
+.trust-stat strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.trust-stat small {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ────────────  SERVICES SECTION  ──────────── */
+.services-section {
+  padding: 5rem 0;
+  background: #f8f9fa;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #e9ecef;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-color: #0066cc;
+}
+
+.service-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.service-card h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+/* ────────────  HOW IT WORKS  ──────────── */
+.how-it-works {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.step-card {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.step-card h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.step-card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* ────────────  VOICEFLOW MODAL  ──────────── */
+
+/* hide Voiceflow's floating launcher + header utility buttons */
+.vfrc-launcher,
+.vfrc-header--button {
+  display: none !important;
+}
+
+/* ───────── desktop / tablet ───────── */
+#vf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#vf-modal {
+  width: 760px;
+  height: 560px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+  overflow: hidden;
+  position: relative;
+}
+
+#vf-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* embed container fills modal (desktop) */
+#vf-embed {
+  position: absolute;
+  inset: 0;
+}
+
+/* Normalize base font size */
+.markdown,
+.vfrc-message,
+.vfrc-user-response,
+.vfrc-input-container,
+.vfrc-choice,
+.vfrc-button {
+  font-size: 1rem !important;
+  line-height: 1.4;
+}
+
+/* Override obfuscated class on user message text */
+.vfrc-user-response ._15emaa41 {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Normalize input box */
+.vfrc-chat-input {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+}
+
+/* ───────── mobile tweaks ───────── */
+@media (max-width:600px) {
+
+  /* full-screen sheet that resizes with the keyboard */
+  #vf-modal {
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
+  }
+
+  /* let embed fill flex space and manage its own scroll */
+  #vf-embed {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* make root / scroll area stretch */
+  #vf-embed .vfrc-root,
+  #vf-embed .vfrc-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #vf-embed .vfrc-scrollable {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  /* bottom safe-area so composer clears the home indicator */
+  #vf-embed .vfrc-input-container {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* bigger × target */
+  #vf-modal-close {
+    top: 10px;
+    right: 14px;
+    font-size: 26px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* ───────── tablet adjustments ───────── */
+@media (max-width: 991px) {
+  .hero-section {
+    padding: 3rem 0;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
