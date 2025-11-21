@@ -314,28 +314,29 @@
         return;
       }
 
-      /* 2️⃣ build STAGING modal (hidden) first */
-      const stagingBackdrop = Object.assign(document.createElement('div'), {
-        id: 'vf-staging-backdrop',
-        style: 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9998;opacity:0;pointer-events:none;'
+      /* 2️⃣ build modal wrapper (backdrop ▸ modal ▸ VF embed) */
+      const backdrop = Object.assign(document.createElement('div'), {id: 'vf-modal-backdrop'});
+      const modal = Object.assign(document.createElement('div'), {id: 'vf-modal'});
+      const embedDiv = Object.assign(document.createElement('div'), {id: 'vf-embed'});
+      const closeBtn = Object.assign(document.createElement('button'), {
+        id: 'vf-modal-close', innerHTML: '&times;',
+        onclick: () => backdrop.remove()
       });
-      const stagingModal = Object.assign(document.createElement('div'), {id: 'vf-staging-modal'});
-      const stagingEmbedDiv = Object.assign(document.createElement('div'), {id: 'vf-staging-embed'});
 
-      stagingModal.append(stagingEmbedDiv);
-      stagingBackdrop.append(stagingModal);
-      document.body.append(stagingBackdrop);
+      modal.append(closeBtn, embedDiv);
+      backdrop.append(modal);
+      document.body.append(backdrop);
 
       /* 3️⃣ inject VF script + load widget once */
       (function (d, t) {
         const v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = async function () {
-          // Load widget in STAGING div first
-          await window.voiceflow.chat.load({
+        v.onload = function () {
+          window.voiceflow.chat.load({
             verify: {projectID: '68d0f6bf57cfeddb8e97923a'},
             url: 'https://general-runtime.voiceflow.com',
             versionID: 'development',
-            render: {mode: 'embedded', target: stagingEmbedDiv},
+            launch: {event: {type: 'launch', payload: {message: jobDescription, user_id: 719155}}},
+            render: {mode: 'embedded', target: embedDiv},
             autostart: true,
             assistant: {
               persistence: 'memory',
@@ -344,52 +345,7 @@
             }
           });
 
-          console.log('✓ Widget loaded in staging area, waiting 4 seconds...');
-
-          // Wait 4 seconds for full initialization, then send message
-          setTimeout(async () => {
-            try {
-              console.log('Sending initial message:', jobDescription);
-
-              await window.voiceflow.chat.interact({
-                type: 'text',
-                payload: jobDescription
-              });
-
-              console.log('✓ Message sent! Moving to visible modal...');
-
-              // Now create the REAL modal and move the widget to it
-              const backdrop = Object.assign(document.createElement('div'), {id: 'vf-modal-backdrop'});
-              const modal = Object.assign(document.createElement('div'), {id: 'vf-modal'});
-              const embedDiv = Object.assign(document.createElement('div'), {id: 'vf-embed'});
-              const closeBtn = Object.assign(document.createElement('button'), {
-                id: 'vf-modal-close', innerHTML: '&times;',
-                onclick: () => backdrop.remove()
-              });
-
-              // Move the widget from staging to real modal
-              while (stagingEmbedDiv.firstChild) {
-                embedDiv.appendChild(stagingEmbedDiv.firstChild);
-              }
-
-              modal.append(closeBtn, embedDiv);
-              backdrop.append(modal);
-              document.body.append(backdrop);
-
-              // Remove staging modal
-              stagingBackdrop.remove();
-
-              console.log('✓ Widget moved to visible modal');
-
-            } catch (error) {
-              console.error('Failed to send message:', error);
-              // Show modal anyway even if message failed
-              stagingBackdrop.style.opacity = '1';
-              stagingBackdrop.style.pointerEvents = 'auto';
-            }
-          }, 4000);
-
-          // Add image upload button after successful send
+          // Add image upload button after widget loads
           setTimeout(function() {
             if (window.addVoiceflowImageUpload) {
               window.addVoiceflowImageUpload();
