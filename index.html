@@ -335,7 +335,15 @@
             verify: {projectID: '68d0f6bf57cfeddb8e97923a'},
             url: 'https://general-runtime.voiceflow.com',
             versionID: 'development',
-            launch: {event: {type: 'launch', payload: {user_id: 719155}}},
+            launch: {
+              event: {
+                type: 'launch',
+                payload: {
+                  user_id: 719155,
+                  message: jobDescription
+                }
+              }
+            },
             render: {mode: 'embedded', target: embedDiv},
             autostart: true,
             assistant: {
@@ -343,14 +351,6 @@
               extensions: [FormExtension],
               stylesheet: 'style.css'
             }
-          }).then(() => {
-            // Wait a bit for widget to be ready, then send the message
-            setTimeout(() => {
-              window.voiceflow.chat.interact({
-                type: 'text',
-                payload: jobDescription
-              });
-            }, 1000);
           });
 
           // Add image upload button after widget loads
@@ -358,7 +358,7 @@
             if (window.addVoiceflowImageUpload) {
               window.addVoiceflowImageUpload();
             }
-          }, 1500);
+          }, 500);
         };
         v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs?v=1.04&t=' + Date.now();
         v.type = 'text/javascript';
